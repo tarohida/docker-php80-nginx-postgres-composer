@@ -1,40 +1,17 @@
-# docker-php-nginx-postgres-composer
-Docker Compose configuration to run PHP 7.1 with Nginx, PHP-FPM, PostgreSQL 10.1 and Composer.
+# docker-php74-nginx-postgres-composer
 
-## Overview
+Docker Compose configuration to run PHP 7.4 with Nginx, PHP-FPM, PostgreSQL 10.1 and Composer.
 
-This Docker Compose configuration lets you run easily PHP 7.1 with Nginx, PHP-FPM, PostgreSQL 10.1 and Composer.
-It exposes 4 services:
-
-* web (Nginx)
-* php (PHP 7.1 with PHP-FPM)
-* db (PostgreSQL 10.1)
-* composer
-
-The PHP image comes with the most commonly used extensions and is configured with xdebug.
-The UUID extension for PostgreSQL has been added.
-Nginx default configuration is set up for Symfony 4 (but can be easily changed) and will serve your working directory.
-Composer is run at boot time and will automatically install the vendors.
-
-## Install prerequisites
-
-For now the project has been tested on Linux only but should run fine on Docker for Windows and Docker for Mac.
-
-You will need:
-
-* [Docker CE](https://docs.docker.com/engine/installation/)
-* [Docker Compose](https://docs.docker.com/compose/install)
-* Git (optional)
+*I update PHP version and fix some error at [ineat/docker-php-nginx-postgres-composer](https://github.com/ineat/docker-php-nginx-postgres-composer)  
+I remove some php-extensions (gd, mcrypt, etc...), because I don't need it.*
 
 ## How to use it
 
 ### Starting Docker Compose
 
-Checkout the repository or download the sources.
-
-Simply run `docker-compose up` and you are done.
-
-Nginx will be available on `localhost:80` and PostgreSQL on `localhost:5432`.
+```
+docker-compose up -d
+```
 
 ### Using Composer
 
@@ -52,20 +29,21 @@ Using .env file default parameters:
 
 `docker-compose exec db psql -U dbuser dbname`
 
-If you want to connect to the DB from another container (from the `php` one for instance), the host will be the service name: `db`.
-
 ### Using PHP
 
 You can execute any command on the `php` container as you would do on any docker-compose container:
 
 `docker-compose exec php php -v`
 
+for example, when you run test,
+
+`docker-compose exec php php vendor/bin/phpunit`
+
 ## Change configuration
 
 ### Configuring PHP
 
 To change PHP's configuration edit `.docker/conf/php/php.ini`.
-Same goes for `.docker/conf/php/xdebug.ini`.
 
 You can add any .ini file in this directory, don't forget to map them by adding a new line in the php's `volume` section of the `docker-compose.yml` file.
 

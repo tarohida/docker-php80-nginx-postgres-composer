@@ -1,27 +1,16 @@
-FROM php:7.1-fpm
+FROM php:7.4-fpm
 
-MAINTAINER Descamps Antoine <antoine.descamps@ineat-conseil.fr>
+MAINTAINER Taro Hida <sk8trou@gmail.com>
 
-RUN apt-get update && apt-get install -y \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libmcrypt-dev \
-        libpng-dev \
-        libicu-dev \
+RUN apt-get update \
+    && apt-get install -y \
+        apt-utils \
+    && apt-get install -y \
         libpq-dev \
-        libxpm-dev \
-        libvpx-dev \
-    && pecl install xdebug \
+        libzip-dev \
+    && pecl install xdebug-2.9.6 \
+    # without version, pecl brings 3.x and it does not works now.
     && docker-php-ext-enable xdebug \
-    && docker-php-ext-install -j$(nproc) mcrypt \
-    && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install -j$(nproc) intl \
     && docker-php-ext-install -j$(nproc) zip \
     && docker-php-ext-install -j$(nproc) pgsql \
-    && docker-php-ext-install -j$(nproc) pdo_pgsql \
-    && docker-php-ext-install -j$(nproc) exif \
-    && docker-php-ext-configure gd \
-        --with-freetype-dir=/usr/include/ \
-        --with-jpeg-dir=/usr/include/ \
-        --with-xpm-dir=/usr/lib/x86_64-linux-gnu/ \
-        --with-vpx-dir=/usr/lib/x86_64-linux-gnu/ \
+    && docker-php-ext-install -j$(nproc) pdo_pgsql
