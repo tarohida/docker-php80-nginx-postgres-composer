@@ -1,0 +1,20 @@
+{
+    "name": "tarohida/docker-php74-nginx-postgres-composer",
+    "description": "Docker Compose configuration to run PHP7.4 with Nginx, PHP-FPM, PostgreSQL 10.1 and Composer.",
+    "type": "metapackage",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Taro Hida",
+            "email": "sk8trou@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}

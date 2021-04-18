@@ -39,6 +39,21 @@ for example, when you run test,
 
 `docker-compose exec php php vendor/bin/phpunit`
 
+#### Test your development environment with phpunit
+
+`docker-compose exec php vendor/bin/phpunit ./tests`
+
+```
+$ docker-compose exec php vendor/bin/phpunit ./tests
+^[[A^[[APHPUnit 9.5.4 by Sebastian Bergmann and contributors.
+
+..                                                                  2 / 2 (100%)
+
+Time: 00:00.038, Memory: 4.00 MB
+
+OK (2 tests, 2 assertions)
+```
+
 ## Change configuration
 
 ### Configuring PHP
