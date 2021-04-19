@@ -1,6 +1,6 @@
-# docker-php74-nginx-postgres-composer
+# docker-php8-nginx-postgres-composer
 
-Docker Compose configuration to run PHP 7.4 with Nginx, PHP-FPM, PostgreSQL 10.1 and Composer.
+Docker Compose configuration to run PHP 8 with Nginx, PHP-FPM, PostgreSQL 10.1 and Composer.
 
 *I update PHP version and fix some error at [ineat/docker-php-nginx-postgres-composer](https://github.com/ineat/docker-php-nginx-postgres-composer)  
 I remove some php-extensions (gd, mcrypt, etc...), because I don't need it.*
@@ -15,7 +15,7 @@ docker-compose up -d
 
 ### Using Composer
 
-`docker-compose run composer <cmd>`
+`docker-compose run --rm composer <cmd>`
 
 Where `cmd` is any of the available composer command.
 
@@ -27,13 +27,13 @@ Default connection:
 
 Using .env file default parameters:
 
-`docker-compose exec db psql -U dbuser dbname`
+`docker-compose exec db psql -U db_user db_name`
 
 ### Using PHP
 
 You can execute any command on the `php` container as you would do on any docker-compose container:
 
-`docker-compose exec php php -v`
+`docker-compose exec php php --version`
 
 for example, when you run test,
 
@@ -44,12 +44,11 @@ for example, when you run test,
 `docker-compose exec php vendor/bin/phpunit ./tests`
 
 ```
-$ docker-compose exec php vendor/bin/phpunit ./tests
-^[[A^[[APHPUnit 9.5.4 by Sebastian Bergmann and contributors.
+PHPUnit 9.5.4 by Sebastian Bergmann and contributors.
 
 ..                                                                  2 / 2 (100%)
 
-Time: 00:00.038, Memory: 4.00 MB
+Time: 00:00.022, Memory: 4.00 MB
 
 OK (2 tests, 2 assertions)
 ```
@@ -70,16 +69,3 @@ If you want to change the db name, db user and db password simply edit the `.env
 
 If you connect to PostgreSQL from localhost a password is not required however from another container you will have to supply it.
 
-## Adding aliases
-
-To avoid typing over and over again the same commands you can add two useful aliases in your shell's configuration (`.bashrc` or `.zshrc` for instance):
-
-```
-alias dcu="docker-compose up"
-alias dcr="docker-compose run"
-alias dce="docker-compose exec"
-```
-
-It then becomes way faster to execute a composer command for instance:
-
-`dcr composer require --dev phpunit/phpunit`
