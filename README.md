@@ -69,3 +69,8 @@ If you want to change the db name, db user and db password simply edit the `.env
 
 If you connect to PostgreSQL from localhost a password is not required however from another container you will have to supply it.
 
+## install to your project
+
+```
+cp -r .env .docker/ docker-compose.yml /path/to/your/project
+```
