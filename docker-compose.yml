@@ -10,7 +10,6 @@ services:
         restart: always
         depends_on:
             - php
-            - db
     php:
         build: .docker
         restart: always
