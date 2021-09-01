@@ -1,6 +1,6 @@
 {
-    "name": "tarohida/docker-php74-nginx-postgres-composer",
-    "description": "Docker Compose configuration to run PHP7.4 with Nginx, PHP-FPM, PostgreSQL 10.1 and Composer.",
+    "name": "tarohida/docker-php80-nginx-postgres-composer",
+    "description": "Docker Compose configuration to run PHP8.0 with Nginx, PHP-FPM, PostgreSQL 10.1 and Composer.",
     "type": "metapackage",
     "license": "MIT",
     "authors": [
