@@ -10,11 +10,12 @@ class PostgreSqlContainerTest extends TestCase
 {
     public function test_connect_to_postgresql_with_pdo()
     {
-        $db_name = 'db_name';
-        $db_user = 'db_user';
-        $db_password = 'db_password';
+        $db_host = $_ENV['db_host'];
+        $db_name = $_ENV['db_name'];
+        $db_user = $_ENV['db_user'];
+        $db_password = $_ENV['db_password'];
         $pdo = new PDO(
-            "pgsql:host=db;dbname=$db_name;",
+            "pgsql:host=$db_host;dbname=$db_name;",
             $db_user,
             $db_password
         );
