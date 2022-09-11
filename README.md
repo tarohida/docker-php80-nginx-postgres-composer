@@ -74,3 +74,20 @@ If you connect to PostgreSQL from localhost a password is not required however f
 ```
 cp -r .env .docker/ docker-compose.yml /path/to/your/project
 ```
+
+## Development
+
+```
+$ ./test-install-script.sh 
+ARGUMENTS ERROR: dir not set
+ARGUMENTS ERROR: dir not exists
+total 20
+drwxrwxr-x 3 taro taro 4096 Sep 12 01:50 .
+drwxrwxr-x 6 taro taro 4096 Sep 12 01:50 ..
+drwxrwxr-x 3 taro taro 4096 Sep 12 01:50 .docker
+-rw-rw-r-- 1 taro taro  965 Sep 12 01:50 docker-compose.yml
+-rw-rw-r-- 1 taro taro   56 Sep 12 01:50 .env
+```
+
+
+
