@@ -91,3 +91,8 @@ drwxrwxr-x 3 taro taro 4096 Sep 12 01:50 .docker
 
 
 
+
+
+### Infrastructure model
+
+![Infrastructure model](.infragenie/infrastructure_model.png)
